@@ -15,7 +15,7 @@ public class BeanFactory {
 
     public BeanFactory() {
         this.configuration = new JavaConfiguration();
-        this.beanConfigurator = new JavaBeanConfigurator(configuration.getPackageToScan());
+        this.beanConfigurator = new JavaBeanConfigurator(configuration.getPackageToScan(), configuration.getInterfaceToImplementation());
     }
 
     public static synchronized BeanFactory getInstance() {
