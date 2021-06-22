@@ -4,6 +4,9 @@ import ru.it.plus.kozyrin.andrew.beanconfigurator.BeanConfigurator;
 import ru.it.plus.kozyrin.andrew.beanconfigurator.JavaBeanConfigurator;
 import ru.it.plus.kozyrin.andrew.config.Configuration;
 import ru.it.plus.kozyrin.andrew.config.JavaConfiguration;
+import ru.it.plus.kozyrin.andrew.service.PaymentSystem;
+import ru.it.plus.kozyrin.andrew.service.impl.CardPaymentSystem;
+import ru.it.plus.kozyrin.andrew.service.impl.CashPaymentSystem;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -15,7 +18,8 @@ public class BeanFactory {
 
     public BeanFactory() {
         this.configuration = new JavaConfiguration();
-        this.beanConfigurator = new JavaBeanConfigurator(configuration.getPackageToScan(), configuration.getInterfaceToImplementation());
+        this.beanConfigurator = new JavaBeanConfigurator(configuration.getPackageToScan(),
+                configuration.getInterfaceToImplementation(PaymentSystem.class, CardPaymentSystem.class));
     }
 
     public static synchronized BeanFactory getInstance() {

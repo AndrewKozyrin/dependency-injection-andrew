@@ -12,7 +12,7 @@ public class JavaConfiguration implements Configuration{
     }
 
     @Override
-    public Map<Class, Class> getInterfaceToImplementation() {
-        return Map.of(PaymentSystem.class, CashPaymentSystem.class);
+    public Map<Class, Class> getInterfaceToImplementation(Class interfaceImplementation, Class interfaceRealisation) {
+        return Map.of(interfaceImplementation, interfaceRealisation);
     }
 }
