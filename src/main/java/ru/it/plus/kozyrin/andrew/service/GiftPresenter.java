@@ -1,6 +1,7 @@
 package ru.it.plus.kozyrin.andrew.service;
 
 import ru.it.plus.kozyrin.andrew.annotation.Inject;
+import ru.it.plus.kozyrin.andrew.annotation.PostConstruct;
 import ru.it.plus.kozyrin.andrew.model.Gift;
 import ru.it.plus.kozyrin.andrew.model.Person;
 
@@ -12,6 +13,11 @@ public class GiftPresenter {
     private PaymentSystem paymentSystem;
     @Inject
     private DeliverySystem deliverySystem;
+
+    @PostConstruct
+    public void postConstruct(){
+        System.out.println("Gift presenter has been initialized!");
+    }
 
     public void present(Person person) {
         Gift gift = giftChooseHelper.choose(person);

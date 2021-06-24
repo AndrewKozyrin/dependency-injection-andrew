@@ -28,6 +28,9 @@ public class BeanFactory {
         this.applicationContext = applicationContext;
     }
 
+    public BeanConfigurator getBeanConfigurator() {
+        return beanConfigurator;
+    }
 
     public <T> T getBean(Class<T> initiateClass) {
         try {

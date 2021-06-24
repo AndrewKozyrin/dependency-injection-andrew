@@ -1,5 +1,6 @@
 package ru.it.plus.kozyrin.andrew.beanconfigurator;
 
+import javassist.tools.reflect.Reflection;
 import org.reflections.Reflections;
 
 import java.util.Map;
@@ -16,6 +17,8 @@ public class JavaBeanConfigurator implements BeanConfigurator {
         this.interfaceToImplementation = new ConcurrentHashMap<>(interfaceToImplementation);
     }
 
+
+
     @Override
     public <T> Class<? extends T> getImplementationClass(Class<T> interfaceClass) {
         return interfaceToImplementation.computeIfAbsent(interfaceClass, findClass -> {
@@ -25,5 +28,10 @@ public class JavaBeanConfigurator implements BeanConfigurator {
             }
             return implementationClasses.stream().findFirst().get();
         });
+    }
+
+    @Override
+    public Reflections getScanner() {
+        return scanner;
     }
 }
